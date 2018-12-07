@@ -21,6 +21,9 @@ before_install:
   - sudo apt-get install fonts-inconsolata -y
   - sudo fc-cache -fv
 
+script:
+  - echo 'hello'
+
 after_success:
   - Rscript -e 'bookdown::render_book("index.rmd", output_format = "bookdown::pdf_book")'
 
