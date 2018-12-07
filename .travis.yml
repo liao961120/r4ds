@@ -2,7 +2,8 @@ language: R
 cache:
   packages: true
   directories:
-  - _book
+    - _book
+    - _bookdown_files
 
 addons:
   apt:
@@ -10,13 +11,24 @@ addons:
       - libxml2-dev
 
 before_install:
-- nvm install stable
-- npm install netlify-cli -g
+#  - sudo apt-get update
+#  - sudo apt-get install texlive-latex-base
+#  - sudo apt-get install texlive-fonts-recommended
+#  - sudo apt-get install texlive-xetex
+#  - sudo apt-get install texlive-fonts-extra
+#  - sudo $(which tlmgr) install index unicode-math filehook lm-math babel-english idxlayout
+#  - sudo apt-get install pdftk
+#  - sudo apt-get install fonts-inconsolata -y
+#  - sudo fc-cache -fv
 
 script:
   - Rscript -e 'bookdown::render_book("index.rmd")'
 
 deploy:
-  provider: script
-  script: netlify deploy --prod --dir _book
-  skip_cleanup: true
+  provider: pages
+  skip-cleanup: true
+  github-token: $GH_TOKEN  # Set in travis-ci.org dashboard, marked secure
+  keep-history: false
+  local-dir: _book # Book output directory
+  on:
+    branch: master
