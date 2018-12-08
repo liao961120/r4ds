@@ -25,7 +25,7 @@ before_install:
 
 script:
   - Rscript -e 'webshot::install_phantomjs()'
-  - Rscript -e 'bookdown::render_book("index.rmd", output_format = "bookdown::pdf_book")'
+  - Rscript -e 'bookdown::render_book("index.rmd")' #, output_format = "bookdown::pdf_book")'
 
 deploy:
   provider: pages
