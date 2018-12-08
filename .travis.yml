@@ -2,7 +2,6 @@ language: R
 cache:
   packages: true
   directories:
-    - _book
     - _bookdown_files
 
 addons:
@@ -25,7 +24,6 @@ before_install:
 
 script:
   - [[ -d _book ]] && rm -r _book/
-  - Rscript -e 'webshot::install_phantomjs()'
   - Rscript -e 'bookdown::render_book("index.rmd", output_format = "bookdown::gitbook")'
 
 deploy:
