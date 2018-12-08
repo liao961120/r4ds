@@ -25,7 +25,8 @@ Imports:
   png,
   pryr,
   tidyverse,
-  viridis
+  viridis,
+  webshot
 Remotes:
   hadley/ggplot2,
   slowkow/ggrepel,

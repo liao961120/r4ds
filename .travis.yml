@@ -24,6 +24,7 @@ before_install:
   - sudo apt-get install libgs-dev
 
 script:
+  - Rscript -e 'webshot::install_phantomjs()'
   - Rscript -e 'bookdown::render_book("index.rmd", output_format = "bookdown::pdf_book")'
 
 deploy:
