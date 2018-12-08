@@ -20,6 +20,8 @@ before_install:
   - sudo apt-get install pdftk
   - sudo apt-get install fonts-inconsolata -y
   - sudo fc-cache -fv
+  - sudo apt-get install ghostscript
+  - sudo apt-get install libgs-dev
 
 script:
   - Rscript -e 'bookdown::render_book("index.rmd", output_format = "bookdown::pdf_book")'
