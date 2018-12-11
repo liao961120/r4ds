@@ -13,3 +13,15 @@
 #header h4.author em {
   font-style: normal;
 }
+
+@media print {
+  div.level1 { 
+    -webkit-column-break-after: always;
+    page-break-before: always;}
+  img {
+    display: block;
+  }
+  img, table, ul, ol, .code-snippet, blockquote, pre {
+      page-break-inside: avoid;
+  }
+}
