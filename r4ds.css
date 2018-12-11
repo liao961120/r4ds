@@ -13,7 +13,3 @@
 #header h4.author em {
   font-style: normal;
 }
-
-@media print {
-  h1 {page-break-before: always;}
-}
