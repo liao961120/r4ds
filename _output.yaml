@@ -1,6 +1,4 @@
 bookdown::gitbook:
-  includes:
-    in_header: media.html
   split_by: none
   config:
     toc:
