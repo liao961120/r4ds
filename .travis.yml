@@ -22,8 +22,6 @@ before_install:
   - sudo apt-get install ghostscript
   - sudo apt-get install libgs-dev
 
-script:
-  - [[ -d _book ]] && rm -r _book/
 
 deploy:
   provider: pages
