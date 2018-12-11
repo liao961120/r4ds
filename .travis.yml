@@ -24,7 +24,6 @@ before_install:
 
 script:
   - [[ -d _book ]] && rm -r _book/
-  - Rscript -e 'bookdown::render_book("index.rmd", output_format = "bookdown::gitbook")'
 
 deploy:
   provider: pages
