@@ -29,6 +29,7 @@ script:
   - mkdir paged
   - cp -r _main* paged
   - cp _book/* paged
+  - mv diagrams paged/
   #- mv _book/_main.html _book/index.html
 
 
