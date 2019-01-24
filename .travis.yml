@@ -24,13 +24,13 @@ before_install:
 
 script:
   - touch .nojekyll
-  - Rscript -e 'devtools::install_github("rstudio/pagedown")'
-  - Rscript -e 'bookdown::render_book("index.Rmd", output_format = "pagedown::book_crc")'
   - Rscript -e 'bookdown::render_book("index.Rmd", output_format = "bookdown::pdf_book")'
-  - mv _main.html _bookdown_files/index.html
-  - mv diagrams _bookdown_files/
-  - mv images _bookdown_files/
-  - mv _book/_main.pdf _bookdown_files/
+  #- Rscript -e 'devtools::install_github("rstudio/pagedown")'
+  #- Rscript -e 'bookdown::render_book("index.Rmd", output_format = "pagedown::book_crc")'
+  #- mv _main.html _bookdown_files/index.html
+  #- mv diagrams _bookdown_files/
+  #- mv images _bookdown_files/
+  #- mv _book/_main.pdf _bookdown_files/
   #- mv _book/_main.html _book/index.html
 
 

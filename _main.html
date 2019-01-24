@@ -46,10 +46,9 @@
   };
 </script>
 
-<link href="_main_files/paged-0.1.2/css/crc-page.css" rel="stylesheet" />
+<link href="_main_files/paged-0.1.2/css/default-fonts.css" rel="stylesheet" />
 <link href="_main_files/paged-0.1.2/css/default-page.css" rel="stylesheet" />
 <link href="_main_files/paged-0.1.2/css/default.css" rel="stylesheet" />
-<link href="_main_files/paged-0.1.2/css/crc.css" rel="stylesheet" />
 <script src="_main_files/paged-0.1.2/js/config.js"></script>
 <script src="_main_files/paged-0.1.2/js/paged.js"></script>
 <script src="_main_files/paged-0.1.2/js/hooks.js"></script>
@@ -742,7 +741,7 @@ interesting modelling problems.</p></li>
 <p>There are some important topics that this book doesn’t cover. We believe it’s important to stay ruthlessly focused on the essentials so you can get up and running as quickly as possible. That means this book can’t cover every important topic.</p>
 <div id="big-data" class="section level3">
 <h3><span class="header-section-number">1.3.1</span> Big data</h3>
-<p>This book proudly focuses on small, in-memory datasets. This is the right place to start because you can’t tackle big data unless you have experience with small data. The tools you learn in this book will easily handle hundreds of megabytes of data, and with a little care you can typically use them to work with 1-2 Gb of data. If you’re routinely working with larger data (10-100 Gb, say), you should learn more about data.table<span id="fn1" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="1"><a href="https://github.com/Rdatatable/data.table" class="uri">https://github.com/Rdatatable/data.table</a></span>. This book doesn’t teach data.table because it has a very concise interface which makes it harder to learn since it offers fewer linguistic cues. But if you’re working with large data, the performance payoff is worth the extra effort required to learn it.</p>
+<p>This book proudly focuses on small, in-memory datasets. This is the right place to start because you can’t tackle big data unless you have experience with small data. The tools you learn in this book will easily handle hundreds of megabytes of data, and with a little care you can typically use them to work with 1-2 Gb of data. If you’re routinely working with larger data (10-100 Gb, say), you should learn more about data.table<span id="fn1" class="footnote" data-pagedown-footnote-number="1" style="white-space: pre-line;"><a href="https://github.com/Rdatatable/data.table" class="uri">https://github.com/Rdatatable/data.table</a></span>. This book doesn’t teach data.table because it has a very concise interface which makes it harder to learn since it offers fewer linguistic cues. But if you’re working with large data, the performance payoff is worth the extra effort required to learn it.</p>
 <p>If your data is bigger than this, carefully consider if your big data problem might actually be a small data problem in disguise. While the complete data might be big, often the data needed to answer a specific question is small. You might be able to find a subset, subsample, or summary that fits in memory and still allows you to answer the question that you’re interested in. The challenge here is finding the right small data, which often requires a lot of iteration.</p>
 <p>Another possibility is that your big data problem is actually a large number of small data problems. Each individual problem might fit in memory, but you have millions of them. For example, you might want to fit a model to each person in your dataset. That would be trivial if you had just 10 or 100 people, but instead you have a million. Fortunately each problem is independent of the others (a setup that is sometimes called embarrassingly parallel), so you just need a system (like Hadoop or Spark) that allows you to send different datasets to different computers for processing. Once you’ve figured out how to answer the question for a single subset using the tools described in this book, you learn new tools like sparklyr, rhipe, and ddr to solve it for the full dataset.</p>
 </div>
@@ -775,7 +774,7 @@ strategies you can use to make this easier in <a href="#model-intro">modelling</
 </div>
 <div id="prerequisites" class="section level2">
 <h2><span class="header-section-number">1.4</span> Prerequisites</h2>
-<p>We’ve made a few assumptions about what you already know in order to get the most out of this book. You should be generally numerically literate, and it’s helpful if you have some programming experience already. If you’ve never programmed before, you might find Hands on Programming with R<span id="fn2" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="2"><a href="http://amzn.com/1449359019" class="uri">http://amzn.com/1449359019</a></span> by Garrett to be a useful adjunct to this book.</p>
+<p>We’ve made a few assumptions about what you already know in order to get the most out of this book. You should be generally numerically literate, and it’s helpful if you have some programming experience already. If you’ve never programmed before, you might find Hands on Programming with R<span id="fn2" class="footnote" data-pagedown-footnote-number="2" style="white-space: pre-line;"><a href="http://amzn.com/1449359019" class="uri">http://amzn.com/1449359019</a></span> by Garrett to be a useful adjunct to this book.</p>
 <p>There are four things you need to run the code in this book: R, RStudio, a collection of R packages called the <strong>tidyverse</strong>, and a handful of other packages. Packages are the fundamental units of reproducible R code. They include reusable functions, the documentation that describes how to use them, and sample data.</p>
 <div id="r" class="section level3">
 <h3><span class="header-section-number">1.4.1</span> R</h3>
@@ -841,7 +840,7 @@ the package name followed by two colons, like <code>dplyr::mutate()</code>, or<b
 <h2><span class="header-section-number">1.6</span> Getting help and learning more</h2>
 <p>This book is not an island; there is no single resource that will allow you to master R. As you start to apply the techniques described in this book to your own data you will soon find questions that I do not answer. This section describes a few tips on how to get help, and to help you keep learning.</p>
 <p>If you get stuck, start with Google. Typically adding “R” to a query is enough to restrict it to relevant results: if the search isn’t useful, it often means that there aren’t any R-specific results available. Google is particularly useful for error messages. If you get an error message and you have no idea what it means, try googling it! Chances are that someone else has been confused by it in the past, and there will be help somewhere on the web. (If the error message isn’t in English, run <code>Sys.setenv(LANGUAGE = &quot;en&quot;)</code> and re-run the code; you’re more likely to find help for English error messages.)</p>
-<p>If Google doesn’t help, try stackoverflow<span id="fn3" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="3"><a href="http://stackoverflow.com" class="uri">http://stackoverflow.com</a></span>. Start by spending a little time searching for an existing answer, including <code>[R]</code> to restrict your search to questions and answers that use R. If you don’t find anything useful, prepare a minimal reproducible example or <strong>reprex</strong>. A good reprex makes it easier for other people to help you, and often you’ll figure out the problem yourself in the course of making it.</p>
+<p>If Google doesn’t help, try stackoverflow<span id="fn3" class="footnote" data-pagedown-footnote-number="3" style="white-space: pre-line;"><a href="http://stackoverflow.com" class="uri">http://stackoverflow.com</a></span>. Start by spending a little time searching for an existing answer, including <code>[R]</code> to restrict your search to questions and answers that use R. If you don’t find anything useful, prepare a minimal reproducible example or <strong>reprex</strong>. A good reprex makes it easier for other people to help you, and often you’ll figure out the problem yourself in the course of making it.</p>
 <p>There are three things you need to include to make your example reproducible: required packages, data, and code.</p>
 <ol style="list-style-type: decimal">
 <li><p><strong>Packages</strong> should be loaded at the top of the script, so it’s easy to
@@ -871,7 +870,7 @@ easier it is to fix.</p></li>
 </ul></li>
 </ol>
 <p>Finish by checking that you have actually made a reproducible example by starting a fresh R session and copying and pasting your script in.</p>
-<p>You should also spend some time preparing yourself to solve problems before they occur. Investing a little time in learning R each day will pay off handsomely in the long run. One way is to follow what Hadley, Garrett, and everyone else at RStudio are doing on the RStudio blog<span id="fn4" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="4"><a href="https://blog.rstudio.org" class="uri">https://blog.rstudio.org</a></span>. This is where we post announcements about new packages, new IDE features, and in-person courses. You might also want to follow Hadley (@hadleywickham<span id="fn5" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="5"><a href="https://twitter.com/hadleywickham" class="uri">https://twitter.com/hadleywickham</a></span>) or Garrett (@statgarrett<span id="fn6" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="6"><a href="https://twitter.com/statgarrett" class="uri">https://twitter.com/statgarrett</a></span>) on Twitter, or follow @rstudiotips<span id="fn7" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="7"><a href="https://twitter.com/rstudiotips" class="uri">https://twitter.com/rstudiotips</a></span> to keep up with new features in the IDE.</p>
+<p>You should also spend some time preparing yourself to solve problems before they occur. Investing a little time in learning R each day will pay off handsomely in the long run. One way is to follow what Hadley, Garrett, and everyone else at RStudio are doing on the RStudio blog<span id="fn4" class="footnote" data-pagedown-footnote-number="4" style="white-space: pre-line;"><a href="https://blog.rstudio.org" class="uri">https://blog.rstudio.org</a></span>. This is where we post announcements about new packages, new IDE features, and in-person courses. You might also want to follow Hadley (@hadleywickham<span id="fn5" class="footnote" data-pagedown-footnote-number="5" style="white-space: pre-line;"><a href="https://twitter.com/hadleywickham" class="uri">https://twitter.com/hadleywickham</a></span>) or Garrett (@statgarrett<span id="fn6" class="footnote" data-pagedown-footnote-number="6" style="white-space: pre-line;"><a href="https://twitter.com/statgarrett" class="uri">https://twitter.com/statgarrett</a></span>) on Twitter, or follow @rstudiotips<span id="fn7" class="footnote" data-pagedown-footnote-number="7" style="white-space: pre-line;"><a href="https://twitter.com/rstudiotips" class="uri">https://twitter.com/rstudiotips</a></span> to keep up with new features in the IDE.</p>
 <p>To keep up with the R community more broadly, we recommend reading <a href="http://www.r-bloggers.com" class="uri">http://www.r-bloggers.com</a>: it aggregates over 500 blogs about R from around the world. If you’re an active Twitter user, follow the <code>#rstats</code> hashtag. Twitter is one of the key tools that Hadley uses to keep up with new developments in the community.</p>
 <!--chapter:end:intro.Rmd-->
 </div>
@@ -1534,7 +1533,7 @@ using the menus?</p></li>
 </div>
 <div id="nycflights13" class="section level3">
 <h3><span class="header-section-number">5.1.2</span> nycflights13</h3>
-<p>To explore the basic data manipulation verbs of dplyr, we’ll use <code>nycflights13::flights</code>. This data frame contains all 336,776 flights that departed from New York City in 2013. The data comes from the US Bureau of Transportation Statistics<span id="fn8" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="8"><a href="http://www.transtats.bts.gov/DatabaseInfo.asp?DB_ID=120&amp;Link=0" class="uri">http://www.transtats.bts.gov/DatabaseInfo.asp?DB_ID=120&amp;Link=0</a></span>, and is documented in <code>?flights</code>.</p>
+<p>To explore the basic data manipulation verbs of dplyr, we’ll use <code>nycflights13::flights</code>. This data frame contains all 336,776 flights that departed from New York City in 2013. The data comes from the US Bureau of Transportation Statistics<span id="fn8" class="footnote" data-pagedown-footnote-number="8" style="white-space: pre-line;"><a href="http://www.transtats.bts.gov/DatabaseInfo.asp?DB_ID=120&amp;Link=0" class="uri">http://www.transtats.bts.gov/DatabaseInfo.asp?DB_ID=120&amp;Link=0</a></span>, and is documented in <code>?flights</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r">flights
 <span class="co">#&gt; # A tibble: 336,776 x 19</span>
 <span class="co">#&gt;    year month   day dep_time sched_dep_time dep_delay arr_time</span>
@@ -3087,8 +3086,8 @@ diamonds2 &lt;-<span class="st"> </span>diamonds <span class="op">%&gt;%</span><
 <div id="learning-more" class="section level2">
 <h2><span class="header-section-number">7.8</span> Learning more</h2>
 <p>If you want to learn more about the mechanics of ggplot2, I’d highly recommend grabbing a copy of the ggplot2 book: <a href="https://amzn.com/331924275X" class="uri">https://amzn.com/331924275X</a>. It’s been recently updated, so it includes dplyr and tidyr code, and has much more space to explore all the facets of visualisation. Unfortunately the book isn’t generally available for free, but if you have a connection to a university you can probably get an electronic version for free through SpringerLink.</p>
-<p>Another useful resource is the <em>R Graphics Cookbook</em><span id="fn9" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="9"><a href="https://amzn.com/1449316956" class="uri">https://amzn.com/1449316956</a></span> by Winston Chang. Much of the contents are available online at <a href="http://www.cookbook-r.com/Graphs/" class="uri">http://www.cookbook-r.com/Graphs/</a>.</p>
-<p>I also recommend <em>Graphical Data Analysis with R</em><span id="fn10" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="10"><a href="https://amzn.com/1498715230" class="uri">https://amzn.com/1498715230</a></span>, by Antony Unwin. This is a book-length treatment similar to the material covered in this chapter, but has the space to go into much greater depth.</p>
+<p>Another useful resource is the <em>R Graphics Cookbook</em><span id="fn9" class="footnote" data-pagedown-footnote-number="9" style="white-space: pre-line;"><a href="https://amzn.com/1449316956" class="uri">https://amzn.com/1449316956</a></span> by Winston Chang. Much of the contents are available online at <a href="http://www.cookbook-r.com/Graphs/" class="uri">http://www.cookbook-r.com/Graphs/</a>.</p>
+<p>I also recommend <em>Graphical Data Analysis with R</em><span id="fn10" class="footnote" data-pagedown-footnote-number="10" style="white-space: pre-line;"><a href="https://amzn.com/1498715230" class="uri">https://amzn.com/1498715230</a></span>, by Antony Unwin. This is a book-length treatment similar to the material covered in this chapter, but has the space to go into much greater depth.</p>
 <!--chapter:end:EDA.Rmd-->
 </div>
 </div>
@@ -3302,12 +3301,12 @@ tb
 <span class="co">#&gt; # A tibble: 1,000 x 5</span>
 <span class="co">#&gt;   a                   b              c     d e    </span>
 <span class="co">#&gt;   &lt;dttm&gt;              &lt;date&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;</span>
-<span class="co">#&gt; 1 2019-01-24 16:38:43 2019-01-31     1 0.368 h    </span>
-<span class="co">#&gt; 2 2019-01-25 10:43:53 2019-02-05     2 0.612 n    </span>
-<span class="co">#&gt; 3 2019-01-25 05:07:32 2019-02-15     3 0.415 l    </span>
-<span class="co">#&gt; 4 2019-01-24 18:28:49 2019-02-14     4 0.212 x    </span>
-<span class="co">#&gt; 5 2019-01-24 14:53:06 2019-02-11     5 0.733 a    </span>
-<span class="co">#&gt; 6 2019-01-25 01:54:03 2019-02-07     6 0.460 v    </span>
+<span class="co">#&gt; 1 2019-01-24 17:14:41 2019-01-31     1 0.368 h    </span>
+<span class="co">#&gt; 2 2019-01-25 11:19:50 2019-02-05     2 0.612 n    </span>
+<span class="co">#&gt; 3 2019-01-25 05:43:30 2019-02-15     3 0.415 l    </span>
+<span class="co">#&gt; 4 2019-01-24 19:04:47 2019-02-14     4 0.212 x    </span>
+<span class="co">#&gt; 5 2019-01-24 15:29:03 2019-02-11     5 0.733 a    </span>
+<span class="co">#&gt; 6 2019-01-25 02:30:00 2019-02-07     6 0.460 v    </span>
 <span class="co">#&gt; # … with 994 more rows</span></code></pre>
 <p>Tibbles are designed so that you don’t accidentally overwhelm your console when you print large data frames. But sometimes you need more output than the default display. There are a few options that can help.</p>
 <p>First, you can explicitly <code>print()</code> the data frame and control the number of rows (<code>n</code>) and the <code>width</code> of the display. <code>width = Inf</code> will display all columns:</p>
@@ -3414,7 +3413,7 @@ widths with <code>fwf_widths()</code> or their position with <code>fwf_positions
 <code>read_table()</code> reads a common variation of fixed width files where columns
 are separated by white space.</p></li>
 <li><p><code>read_log()</code> reads Apache style log files. (But also check out
-webreadr<span id="fn11" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="11"><a href="https://github.com/Ironholds/webreadr" class="uri">https://github.com/Ironholds/webreadr</a></span> which is built on top
+webreadr<span id="fn11" class="footnote" data-pagedown-footnote-number="11" style="white-space: pre-line;"><a href="https://github.com/Ironholds/webreadr" class="uri">https://github.com/Ironholds/webreadr</a></span> which is built on top
 of <code>read_log()</code> and provides many more helpful tools.)</p></li>
 </ul>
 <p>These functions all have similar syntax: once you’ve mastered one, you can use the others with ease. For the rest of this chapter we’ll focus on <code>read_csv()</code>. Not only are csv files one of the most common forms of data storage, but once you understand <code>read_csv()</code>, you can easily apply your knowledge to all the other functions in readr.</p>
@@ -4066,7 +4065,7 @@ be shared across programming languages:</p>
 database and return a data frame.</p></li>
 </ul>
 <p>For hierarchical data: use <strong>jsonlite</strong> (by Jeroen Ooms) for json, and <strong>xml2</strong> for XML. Jenny Bryan has some excellent worked examples at <a href="https://jennybc.github.io/purrr-tutorial/" class="uri">https://jennybc.github.io/purrr-tutorial/</a>.</p>
-<p>For other file types, try the R data import/export manual<span id="fn12" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="12"><a href="https://cran.r-project.org/doc/manuals/r-release/R-data.html" class="uri">https://cran.r-project.org/doc/manuals/r-release/R-data.html</a></span> and the <strong>rio</strong><span id="fn13" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="13"><a href="https://github.com/leeper/rio" class="uri">https://github.com/leeper/rio</a></span> package.</p>
+<p>For other file types, try the R data import/export manual<span id="fn12" class="footnote" data-pagedown-footnote-number="12" style="white-space: pre-line;"><a href="https://cran.r-project.org/doc/manuals/r-release/R-data.html" class="uri">https://cran.r-project.org/doc/manuals/r-release/R-data.html</a></span> and the <strong>rio</strong><span id="fn13" class="footnote" data-pagedown-footnote-number="13" style="white-space: pre-line;"><a href="https://github.com/leeper/rio" class="uri">https://github.com/leeper/rio</a></span> package.</p>
 <!--chapter:end:import.Rmd-->
 </div>
 </div>
@@ -5569,7 +5568,7 @@ x
 <span class="co">#&gt; [1] &quot;I&quot; &quot;I&quot;</span>
 <span class="kw">str_to_upper</span>(<span class="kw">c</span>(<span class="st">&quot;i&quot;</span>, <span class="st">&quot;ı&quot;</span>), <span class="dt">locale =</span> <span class="st">&quot;tr&quot;</span>)
 <span class="co">#&gt; [1] &quot;İ&quot; &quot;I&quot;</span></code></pre>
-<p>The locale is specified as a ISO 639 language code, which is a two or three letter abbreviation. If you don’t already know the code for your language, Wikipedia<span id="fn14" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="14"><a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" class="uri">https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes</a></span> has a good list. If you leave the locale blank, it will use the current locale, as provided by your operating system.</p>
+<p>The locale is specified as a ISO 639 language code, which is a two or three letter abbreviation. If you don’t already know the code for your language, Wikipedia<span id="fn14" class="footnote" data-pagedown-footnote-number="14" style="white-space: pre-line;"><a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" class="uri">https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes</a></span> has a good list. If you leave the locale blank, it will use the current locale, as provided by your operating system.</p>
 <p>Another important operation that’s affected by the locale is sorting. The base R <code>order()</code> and <code>sort()</code> functions sort strings using the current locale. If you want robust behaviour across different computers, you may want to use <code>str_sort()</code> and <code>str_order()</code> which take an additional <code>locale</code> argument:</p>
 <pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;eggplant&quot;</span>, <span class="st">&quot;banana&quot;</span>)
 
@@ -5658,7 +5657,7 @@ How would you represent it as a string?</p></li>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_view</span>(x, <span class="st">&quot;a$&quot;</span>)</code></pre>
 <div id="htmlwidget-76502c887ec734b6105a" style="width:960px;height:100%;" class="str_view html-widget"></div>
 <script type="application/json" data-for="htmlwidget-76502c887ec734b6105a">{"x":{"html":"<ul>\n  <li>apple<\/li>\n  <li>banan<span class='match'>a<\/span><\/li>\n  <li>pear<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
-<p>To remember which is which, try this mnemonic which I learned from Evan Misshula<span id="fn15" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="15"><a href="https://twitter.com/emisshula/status/323863393167613953" class="uri">https://twitter.com/emisshula/status/323863393167613953</a></span>: if you begin with power (<code>^</code>), you end up with money (<code>$</code>).</p>
+<p>To remember which is which, try this mnemonic which I learned from Evan Misshula<span id="fn15" class="footnote" data-pagedown-footnote-number="15" style="white-space: pre-line;"><a href="https://twitter.com/emisshula/status/323863393167613953" class="uri">https://twitter.com/emisshula/status/323863393167613953</a></span>: if you begin with power (<code>^</code>), you end up with money (<code>$</code>).</p>
 <p>To force a regular expression to only match a complete string, anchor it with both <code>^</code> and <code>$</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;apple pie&quot;</span>, <span class="st">&quot;apple&quot;</span>, <span class="st">&quot;apple cake&quot;</span>)
 <span class="kw">str_view</span>(x, <span class="st">&quot;apple&quot;</span>)</code></pre>
@@ -6016,7 +6015,7 @@ proportion of vowels? (Hint: what is the denominator?)</p></li>
 </div>
 <div id="extract-matches" class="section level3">
 <h3><span class="header-section-number">14.4.2</span> Extract matches</h3>
-<p>To extract the actual text of a match, use <code>str_extract()</code>. To show that off, we’re going to need a more complicated example. I’m going to use the Harvard sentences<span id="fn16" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="16"><a href="https://en.wikipedia.org/wiki/Harvard_sentences" class="uri">https://en.wikipedia.org/wiki/Harvard_sentences</a></span>, which were designed to test VOIP systems, but are also useful for practicing regexps. These are provided in <code>stringr::sentences</code>:</p>
+<p>To extract the actual text of a match, use <code>str_extract()</code>. To show that off, we’re going to need a more complicated example. I’m going to use the Harvard sentences<span id="fn16" class="footnote" data-pagedown-footnote-number="16" style="white-space: pre-line;"><a href="https://en.wikipedia.org/wiki/Harvard_sentences" class="uri">https://en.wikipedia.org/wiki/Harvard_sentences</a></span>, which were designed to test VOIP systems, but are also useful for practicing regexps. These are provided in <code>stringr::sentences</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(sentences)
 <span class="co">#&gt; [1] 720</span>
 <span class="kw">head</span>(sentences)
@@ -6303,9 +6302,9 @@ regular expressions. The following microbenchmark shows that it’s about
   <span class="dt">times =</span> <span class="dv">20</span>
 )
 <span class="co">#&gt; Unit: microseconds</span>
-<span class="co">#&gt;   expr   min    lq  mean median  uq max neval</span>
-<span class="co">#&gt;  fixed  67.2  79.7  99.8   83.4 108 264    20</span>
-<span class="co">#&gt;  regex 318.1 321.7 365.5  333.1 337 959    20</span></code></pre>
+<span class="co">#&gt;   expr   min    lq mean median  uq max neval</span>
+<span class="co">#&gt;  fixed  84.7  87.5  113    101 116 330    20</span>
+<span class="co">#&gt;  regex 349.5 359.8  386    365 380 690    20</span></code></pre>
 <p>Beware using <code>fixed()</code> with non-English data. It is problematic because
 there are often multiple ways of representing the same character. For
 example, there are two ways to define “á”: either as a single character or
@@ -6360,8 +6359,8 @@ compared to <code>regex()</code> and <code>fixed()</code>.</p></li>
 You can also use it with the other functions:</p>
 <pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> &quot;This is a sentence.&quot;</span>
 <span class="kw">str_view_all</span>(x, <span class="kw">boundary</span>(<span class="st">&quot;word&quot;</span>))</code></pre>
-<div id="htmlwidget-ae7fa4a918c3c5fdf863" style="width:960px;height:100%;" class="str_view html-widget"></div>
-    <script type="application/json" data-for="htmlwidget-ae7fa4a918c3c5fdf863">{"x":{"html":"<ul>\n  <li><span class='match'>This<\/span> <span class='match'>is<\/span> <span class='match'>a<\/span> <span class='match'>sentence<\/span>.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-20f0cdc2888b18632cb0" style="width:960px;height:100%;" class="str_view html-widget"></div>
+    <script type="application/json" data-for="htmlwidget-20f0cdc2888b18632cb0">{"x":{"html":"<ul>\n  <li><span class='match'>This<\/span> <span class='match'>is<\/span> <span class='match'>a<\/span> <span class='match'>sentence<\/span>.<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str_extract_all</span>(x, <span class="kw">boundary</span>(<span class="st">&quot;word&quot;</span>))
 <span class="co">#&gt; [[1]]</span>
 <span class="co">#&gt; [1] &quot;This&quot;     &quot;is&quot;       &quot;a&quot;        &quot;sentence&quot;</span></code></pre></li>
@@ -6430,7 +6429,7 @@ sorting?</p></li>
 </div>
 <div id="learning-more-1" class="section level3">
 <h3><span class="header-section-number">15.1.2</span> Learning more</h3>
-<p>If you want to learn more about factors, I recommend reading Amelia McNamara and Nicholas Horton’s paper, <em>Wrangling categorical data in R</em><span id="fn17" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="17"><a href="https://peerj.com/preprints/3163/" class="uri">https://peerj.com/preprints/3163/</a></span>. This paper lays out some of the history discussed in <em>stringsAsFactors: An unauthorized biography</em><span id="fn18" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="18"><a href="http://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/" class="uri">http://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/</a></span> and <em>stringsAsFactors = &lt;sigh&gt;</em><span id="fn19" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="19"><a href="http://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh" class="uri">http://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh</a></span>, and compares the tidy approaches to categorical data outlined in this book with base R methods. A early version of the paper help motivate and scope the forcats package; thanks Amelia &amp; Nick!</p>
+<p>If you want to learn more about factors, I recommend reading Amelia McNamara and Nicholas Horton’s paper, <em>Wrangling categorical data in R</em><span id="fn17" class="footnote" data-pagedown-footnote-number="17" style="white-space: pre-line;"><a href="https://peerj.com/preprints/3163/" class="uri">https://peerj.com/preprints/3163/</a></span>. This paper lays out some of the history discussed in <em>stringsAsFactors: An unauthorized biography</em><span id="fn18" class="footnote" data-pagedown-footnote-number="18" style="white-space: pre-line;"><a href="http://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/" class="uri">http://simplystatistics.org/2015/07/24/stringsasfactors-an-unauthorized-biography/</a></span> and <em>stringsAsFactors = &lt;sigh&gt;</em><span id="fn19" class="footnote" data-pagedown-footnote-number="19" style="white-space: pre-line;"><a href="http://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh" class="uri">http://notstatschat.tumblr.com/post/124987394001/stringsasfactors-sigh</a></span>, and compares the tidy approaches to categorical data outlined in this book with base R methods. A early version of the paper help motivate and scope the forcats package; thanks Amelia &amp; Nick!</p>
 </div>
 </div>
 <div id="creating-factors" class="section level2">
@@ -6489,7 +6488,7 @@ f2
 </div>
 <div id="general-social-survey" class="section level2">
 <h2><span class="header-section-number">15.3</span> General Social Survey</h2>
-<p>For the rest of this chapter, we’re going to focus on <code>forcats::gss_cat</code>. It’s a sample of data from the General Social Survey<span id="fn20" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="20"><a href="http://gss.norc.org" class="uri">http://gss.norc.org</a></span>, which is a long-running US survey conducted by the independent research organization NORC at the University of Chicago. The survey has thousands of questions, so in <code>gss_cat</code> I’ve selected a handful that will illustrate some common challenges you’ll encounter when working with factors.</p>
+<p>For the rest of this chapter, we’re going to focus on <code>forcats::gss_cat</code>. It’s a sample of data from the General Social Survey<span id="fn20" class="footnote" data-pagedown-footnote-number="20" style="white-space: pre-line;"><a href="http://gss.norc.org" class="uri">http://gss.norc.org</a></span>, which is a long-running US survey conducted by the independent research organization NORC at the University of Chicago. The survey has thousands of questions, so in <code>gss_cat</code> I’ve selected a handful that will illustrate some common challenges you’ll encounter when working with factors.</p>
 <pre class="sourceCode r"><code class="sourceCode r">gss_cat
 <span class="co">#&gt; # A tibble: 21,483 x 9</span>
 <span class="co">#&gt;    year marital     age race  rincome   partyid    relig    denom   tvhours</span>
@@ -6766,7 +6765,7 @@ that’s a very useful name.</p></li>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">today</span>()
 <span class="co">#&gt; [1] &quot;2019-01-24&quot;</span>
 <span class="kw">now</span>()
-<span class="co">#&gt; [1] &quot;2019-01-24 14:47:03 CST&quot;</span></code></pre>
+<span class="co">#&gt; [1] &quot;2019-01-24 15:19:02 CST&quot;</span></code></pre>
 <p>Otherwise, there are three ways you’re likely to create a date/time:</p>
 <ul>
 <li>From a string.</li>
@@ -7269,13 +7268,13 @@ and functional programming, which you’ll learn about in <a href="#iteration">i
 <p>The goal of these chapters is to teach you the minimum about programming that you need to practice data science, which turns out to be a reasonable amount. Once you have mastered the material in this book, I strongly believe you should invest further in your programming skills. Learning more about programming is a long-term investment: it won’t pay off immediately, but in the long term it will allow you to solve new problems more quickly, and let you reuse your insights from previous problems in new scenarios.</p>
 <p>To learn more you need to study R as a programming language, not just an interactive environment for data science. We have written two books that will help you do so:</p>
 <ul>
-<li><p><em>Hands on Programming with R</em><span id="fn21" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="21"><a href="https://amzn.com/1449359019" class="uri">https://amzn.com/1449359019</a></span>,
+<li><p><em>Hands on Programming with R</em><span id="fn21" class="footnote" data-pagedown-footnote-number="21" style="white-space: pre-line;"><a href="https://amzn.com/1449359019" class="uri">https://amzn.com/1449359019</a></span>,
 by Garrett Grolemund. This is an introduction to R as a programming language
 and is a great place to start if R is your first programming language. It
 covers similar material to these chapters, but with a different style and
 different motivation examples (based in the casino). It’s a useful complement
 if you find that these four chapters go by too quickly.</p></li>
-<li><p><em>Advanced R</em><span id="fn22" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="22"><a href="https://amzn.com/1466586966" class="uri">https://amzn.com/1466586966</a></span> by Hadley Wickham. This dives into the
+<li><p><em>Advanced R</em><span id="fn22" class="footnote" data-pagedown-footnote-number="22" style="white-space: pre-line;"><a href="https://amzn.com/1466586966" class="uri">https://amzn.com/1466586966</a></span> by Hadley Wickham. This dives into the
 details of R the programming language. This is a great place to start if you
 have existing programming experience. It’s also a great next step once you’ve
 internalised the ideas in these chapters. You can read it online at
@@ -7379,7 +7378,7 @@ times!) obscures what’s changing on each line.</p></li>
   <span class="dt">on =</span> head
 )</code></pre>
 <p>Here the disadvantage is that you have to read from inside-out, from right-to-left, and that the arguments end up spread far apart (evocatively called the
-dagwood sandwhich<span id="fn23" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="23"><a href="https://en.wikipedia.org/wiki/Dagwood_sandwich" class="uri">https://en.wikipedia.org/wiki/Dagwood_sandwich</a></span> problem). In short, this code is hard for a human to consume.</p>
+dagwood sandwhich<span id="fn23" class="footnote" data-pagedown-footnote-number="23" style="white-space: pre-line;"><a href="https://en.wikipedia.org/wiki/Dagwood_sandwich" class="uri">https://en.wikipedia.org/wiki/Dagwood_sandwich</a></span> problem). In short, this code is hard for a human to consume.</p>
 </div>
 <div id="use-the-pipe" class="section level3">
 <h3><span class="header-section-number">18.2.4</span> Use the pipe</h3>
@@ -7614,7 +7613,7 @@ and returns the number of positions that have an <code>NA</code> in both vectors
 are so short?</p>
 <pre class="sourceCode r"><code class="sourceCode r">is_directory &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">file.info</span>(x)<span class="op">$</span>isdir
 is_readable &lt;-<span class="st"> </span><span class="cf">function</span>(x) <span class="kw">file.access</span>(x, <span class="dv">4</span>) <span class="op">==</span><span class="st"> </span><span class="dv">0</span></code></pre></li>
-<li><p>Read the complete lyrics<span id="fn24" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="24"><a href="https://en.wikipedia.org/wiki/Little_Bunny_Foo_Foo" class="uri">https://en.wikipedia.org/wiki/Little_Bunny_Foo_Foo</a></span>
+<li><p>Read the complete lyrics<span id="fn24" class="footnote" data-pagedown-footnote-number="24" style="white-space: pre-line;"><a href="https://en.wikipedia.org/wiki/Little_Bunny_Foo_Foo" class="uri">https://en.wikipedia.org/wiki/Little_Bunny_Foo_Foo</a></span>
 to “Little Bunny Foo Foo”. There’s a lot of duplication in this song.
 Extend the initial piping example to recreate the complete song, and use
 functions to reduce the duplication.</p></li>
@@ -8091,7 +8090,7 @@ y &lt;-<span class="st"> </span><span class="dv">1000</span>
 <span class="co">#&gt;   3 3.3 </span>
 <span class="co">#&gt; 100 900</span>
 <span class="kw">rm</span>(<span class="st">`</span><span class="dt">+</span><span class="st">`</span>)</code></pre>
-<p>This is a common phenomenon in R. R places few limits on your power. You can do many things that you can’t do in other programming languages. You can do many things that 99% of the time are extremely ill-advised (like overriding how addition works!). But this power and flexibility is what makes tools like ggplot2 and dplyr possible. Learning how to make best use of this flexibility is beyond the scope of this book, but you can read about in <em>Advanced R</em><span id="fn25" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="25"><a href="http://adv-r.had.co.nz" class="uri">http://adv-r.had.co.nz</a></span>.</p>
+<p>This is a common phenomenon in R. R places few limits on your power. You can do many things that you can’t do in other programming languages. You can do many things that 99% of the time are extremely ill-advised (like overriding how addition works!). But this power and flexibility is what makes tools like ggplot2 and dplyr possible. Learning how to make best use of this flexibility is beyond the scope of this book, but you can read about in <em>Advanced R</em><span id="fn25" class="footnote" data-pagedown-footnote-number="25" style="white-space: pre-line;"><a href="http://adv-r.had.co.nz" class="uri">http://adv-r.had.co.nz</a></span>.</p>
 <!--chapter:end:functions.Rmd-->
 </div>
 </div>
@@ -8687,7 +8686,7 @@ You can get and set individual attribute values with <code>attr()</code> or see 
 <pre class="sourceCode r"><code class="sourceCode r">as.Date
 <span class="co">#&gt; function (x, ...) </span>
 <span class="co">#&gt; UseMethod(&quot;as.Date&quot;)</span>
-<span class="co">#&gt; &lt;bytecode: 0x55a6235f4df8&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x5592b6e35750&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:base&gt;</span></code></pre>
 <p>The call to “UseMethod” means that this is a generic function, and it will call a specific <strong>method</strong>, a function, based on the class of the first argument. (All methods are functions; not all functions are methods). You can list all the methods for a generic with <code>methods()</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">methods</span>(<span class="st">&quot;as.Date&quot;</span>)
@@ -8706,7 +8705,7 @@ You can get and set individual attribute values with <code>attr()</code> or see 
 <span class="co">#&gt;     stop(gettextf(&quot;do not know how to convert &#39;%s&#39; to class %s&quot;, </span>
 <span class="co">#&gt;         deparse(substitute(x)), dQuote(&quot;Date&quot;)), domain = NA)</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x55a623aac808&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x5592b72e7f60&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:base&gt;</span>
 <span class="kw">getS3method</span>(<span class="st">&quot;as.Date&quot;</span>, <span class="st">&quot;numeric&quot;</span>)
 <span class="co">#&gt; function (x, origin, ...) </span>
@@ -8715,7 +8714,7 @@ You can get and set individual attribute values with <code>attr()</code> or see 
 <span class="co">#&gt;         stop(&quot;&#39;origin&#39; must be supplied&quot;)</span>
 <span class="co">#&gt;     as.Date(origin, ...) + x</span>
 <span class="co">#&gt; }</span>
-<span class="co">#&gt; &lt;bytecode: 0x55a623aae270&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x5592b72ea5e8&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:base&gt;</span></code></pre>
 <p>The most important S3 generic is <code>print()</code>: it controls how the object is printed when you type its name at the console. Other important generics are the subsetting functions <code>[</code>, <code>[[</code>, and <code>$</code>.</p>
 </div>
@@ -10600,7 +10599,7 @@ brainstorm potential explanations.</p></li>
 <span class="st">    </span><span class="kw">scale_x_date</span>(<span class="ot">NULL</span>, <span class="dt">date_breaks =</span> <span class="st">&quot;1 month&quot;</span>, <span class="dt">date_labels =</span> <span class="st">&quot;%b&quot;</span>)</code></pre>
 <p><img src="model-building_files/figure-html/unnamed-chunk-21-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <p>(I’ve used both points and lines to make it more clear what is data and what is interpolation.)</p>
-<p>I suspect this pattern is caused by summer holidays: many people go on holiday in the summer, and people don’t mind travelling on Saturdays for vacation. Looking at this plot, we might guess that summer holidays are from early June to late August. That seems to line up fairly well with the state’s school terms<span id="fn26" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="26"><a href="http://schools.nyc.gov/Calendar/2013-2014+School+Year+Calendars.htm" class="uri">http://schools.nyc.gov/Calendar/2013-2014+School+Year+Calendars.htm</a></span>: summer break in 2013 was Jun 26–Sep 9.</p>
+<p>I suspect this pattern is caused by summer holidays: many people go on holiday in the summer, and people don’t mind travelling on Saturdays for vacation. Looking at this plot, we might guess that summer holidays are from early June to late August. That seems to line up fairly well with the state’s school terms<span id="fn26" class="footnote" data-pagedown-footnote-number="26" style="white-space: pre-line;"><a href="http://schools.nyc.gov/Calendar/2013-2014+School+Year+Calendars.htm" class="uri">http://schools.nyc.gov/Calendar/2013-2014+School+Year+Calendars.htm</a></span>: summer break in 2013 was Jun 26–Sep 9.</p>
 <p>Why are there more Saturday flights in the Spring than the Fall? I asked some American friends and they suggested that it’s less common to plan family vacations during the Fall because of the big Thanksgiving and Christmas holidays. We don’t have the data to know for sure, but it seems like a plausible working hypothesis.</p>
 <p>Lets create a “term” variable that roughly captures the three school terms, and check our work with a plot:</p>
 <pre class="sourceCode r"><code class="sourceCode r">term &lt;-<span class="st"> </span><span class="cf">function</span>(date) {
@@ -11868,7 +11867,7 @@ processed_data &lt;- rawdata %&gt;%
 rawdata &lt;- readr::read_csv(&quot;a_very_large_file.csv&quot;)
 ```</code></pre>
 <p>As your caching strategies get progressively more complicated, it’s a good idea to regularly clear out all your caches with <code>knitr::clean_cache()</code>.</p>
-<p>I’ve used the advice of David Robinson<span id="fn27" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="27"><a href="https://twitter.com/drob/status/738786604731490304" class="uri">https://twitter.com/drob/status/738786604731490304</a></span> to name these chunks: each chunk is named after the primary object that it creates. This makes it easier to understand the <code>dependson</code> specification.</p>
+<p>I’ve used the advice of David Robinson<span id="fn27" class="footnote" data-pagedown-footnote-number="27" style="white-space: pre-line;"><a href="https://twitter.com/drob/status/738786604731490304" class="uri">https://twitter.com/drob/status/738786604731490304</a></span> to name these chunks: each chunk is named after the primary object that it creates. This makes it easier to understand the <code>dependson</code> specification.</p>
 </div>
 <div id="global-options" class="section level3">
 <h3><span class="header-section-number">27.4.5</span> Global options</h3>
@@ -12020,7 +12019,7 @@ R users, by Jenny Bryan. The book is freely available online:
 <li><p>The “Git and GitHub” chapter of <em>R Packages</em>, by Hadley. You can also
 read it for free online: <a href="http://r-pkgs.had.co.nz/git.html" class="uri">http://r-pkgs.had.co.nz/git.html</a>.</p></li>
 </ol>
-<p>I have also not touched on what you should actually write in order to clearly communicate the results of your analysis. To improve your writing, I highly recommend reading either <em>Style: Lessons in Clarity and Grace</em><span id="fn28" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="28"><a href="https://amzn.com/0134080416" class="uri">https://amzn.com/0134080416</a></span> by Joseph M. Williams &amp; Joseph Bizup, or <em>The Sense of Structure: Writing from the Reader’s Perspective</em><span id="fn29" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="29"><a href="https://amzn.com/0205296327" class="uri">https://amzn.com/0205296327</a></span> by George Gopen. Both books will help you understand the structure of sentences and paragraphs, and give you the tools to make your writing more clear. (These books are rather expensive if purchased new, but they’re used by many English classes so there are plenty of cheap second-hand copies). George Gopen also has a number of short articles on writing at <a href="https://www.georgegopen.com/the-litigation-articles.html" class="uri">https://www.georgegopen.com/the-litigation-articles.html</a>. They are aimed at lawyers, but almost everything applies to data scientists too.</p>
+<p>I have also not touched on what you should actually write in order to clearly communicate the results of your analysis. To improve your writing, I highly recommend reading either <em>Style: Lessons in Clarity and Grace</em><span id="fn28" class="footnote" data-pagedown-footnote-number="28" style="white-space: pre-line;"><a href="https://amzn.com/0134080416" class="uri">https://amzn.com/0134080416</a></span> by Joseph M. Williams &amp; Joseph Bizup, or <em>The Sense of Structure: Writing from the Reader’s Perspective</em><span id="fn29" class="footnote" data-pagedown-footnote-number="29" style="white-space: pre-line;"><a href="https://amzn.com/0205296327" class="uri">https://amzn.com/0205296327</a></span> by George Gopen. Both books will help you understand the structure of sentences and paragraphs, and give you the tools to make your writing more clear. (These books are rather expensive if purchased new, but they’re used by many English classes so there are plenty of cheap second-hand copies). George Gopen also has a number of short articles on writing at <a href="https://www.georgegopen.com/the-litigation-articles.html" class="uri">https://www.georgegopen.com/the-litigation-articles.html</a>. They are aimed at lawyers, but almost everything applies to data scientists too.</p>
 <!--chapter:end:rmarkdown.Rmd-->
 </div>
 </div>
@@ -12030,7 +12029,7 @@ read it for free online: <a href="http://r-pkgs.had.co.nz/git.html" class="uri">
 <h2><span class="header-section-number">28.1</span> Introduction</h2>
 <p>In <a href="#exploratory-data-analysis">exploratory data analysis</a>, you learned how to use plots as tools for <em>exploration</em>. When you make exploratory plots, you know—even before looking—which variables the plot will display. You made each plot for a purpose, could quickly look at it, and then move on to the next plot. In the course of most analyses, you’ll produce tens or hundreds of plots, most of which are immediately thrown away.</p>
 <p>Now that you understand your data, you need to <em>communicate</em> your understanding to others. Your audience will likely not share your background knowledge and will not be deeply invested in the data. To help others quickly build up a good mental model of the data, you will need to invest considerable effort in making your plots as self-explanatory as possible. In this chapter, you’ll learn some of the tools that ggplot2 provides to do so.</p>
-<p>This chapter focuses on the tools you need to create good graphics. I assume that you know what you want, and just need to know how to do it. For that reason, I highly recommend pairing this chapter with a good general visualisation book. I particularly like <em>The Truthful Art</em><span id="fn30" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="30"><a href="https://amzn.com/0321934075" class="uri">https://amzn.com/0321934075</a></span>, by Albert Cairo. It doesn’t teach the mechanics of creating visualisations, but instead focuses on what you need to think about in order to create effective graphics.</p>
+<p>This chapter focuses on the tools you need to create good graphics. I assume that you know what you want, and just need to know how to do it. For that reason, I highly recommend pairing this chapter with a good general visualisation book. I particularly like <em>The Truthful Art</em><span id="fn30" class="footnote" data-pagedown-footnote-number="30" style="white-space: pre-line;"><a href="https://amzn.com/0321934075" class="uri">https://amzn.com/0321934075</a></span>, by Albert Cairo. It doesn’t teach the mechanics of creating visualisations, but instead focuses on what you need to think about in order to create effective graphics.</p>
 <div id="prerequisites-19" class="section level3">
 <h3><span class="header-section-number">28.1.1</span> Prerequisites</h3>
 <p>In this chapter, we’ll focus once again on ggplot2. We’ll also use a little dplyr for data manipulation, and a few ggplot2 extension packages, including <strong>ggrepel</strong> and <strong>viridis</strong>. Rather than loading those extensions here, we’ll refer to their functions explicitly, using the <code>::</code> notation. This will help make it clear which functions are built into ggplot2, and which come from other packages. Don’t forget you’ll need to install those packages with <code>install.packages()</code> if you don’t already have them.</p>
@@ -12428,7 +12427,7 @@ Figure 28.3: The eight themes built-in to ggplot2.
 </p>
 </div>
 <p>Many people wonder why the default theme has a grey background. This was a deliberate choice because it puts the data forward while still making the grid lines visible. The white grid lines are visible (which is important because they significantly aid position judgements), but they have little visual impact and we can easily tune them out. The grey background gives the plot a similar typographic colour to the text, ensuring that the graphics fit in with the flow of a document without jumping out with a bright white background. Finally, the grey background creates a continuous field of colour which ensures that the plot is perceived as a single visual entity.</p>
-<p>It’s also possible to control individual components of each theme, like the size and colour of the font used for the y axis. Unfortunately, this level of detail is outside the scope of this book, so you’ll need to read the ggplot2 book<span id="fn31" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="31"><a href="https://amzn.com/331924275X" class="uri">https://amzn.com/331924275X</a></span> for the full details. You can also create your own themes, if you are trying to match a particular corporate or journal style.</p>
+<p>It’s also possible to control individual components of each theme, like the size and colour of the font used for the y axis. Unfortunately, this level of detail is outside the scope of this book, so you’ll need to read the ggplot2 book<span id="fn31" class="footnote" data-pagedown-footnote-number="31" style="white-space: pre-line;"><a href="https://amzn.com/331924275X" class="uri">https://amzn.com/331924275X</a></span> for the full details. You can also create your own themes, if you are trying to match a particular corporate or journal style.</p>
 </div>
 <div id="saving-your-plots" class="section level2">
 <h2><span class="header-section-number">28.7</span> Saving your plots</h2>
@@ -12474,7 +12473,7 @@ discussed below.</p></li>
 </div>
 <div id="learning-more-4" class="section level2">
 <h2><span class="header-section-number">28.8</span> Learning more</h2>
-<p>The absolute best place to learn more is the ggplot2 book: <em>ggplot2: Elegant graphics for data analysis</em><span id="fn32" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="32"><a href="https://amzn.com/331924275X" class="uri">https://amzn.com/331924275X</a></span>. It goes into much more depth about the underlying theory, and has many more examples of how to combine the individual pieces to solve practical problems. Unfortunately, the book is not available online for free, although you can find the source code at <a href="https://github.com/hadley/ggplot2-book" class="uri">https://github.com/hadley/ggplot2-book</a>.</p>
+<p>The absolute best place to learn more is the ggplot2 book: <em>ggplot2: Elegant graphics for data analysis</em><span id="fn32" class="footnote" data-pagedown-footnote-number="32" style="white-space: pre-line;"><a href="https://amzn.com/331924275X" class="uri">https://amzn.com/331924275X</a></span>. It goes into much more depth about the underlying theory, and has many more examples of how to combine the individual pieces to solve practical problems. Unfortunately, the book is not available online for free, although you can find the source code at <a href="https://github.com/hadley/ggplot2-book" class="uri">https://github.com/hadley/ggplot2-book</a>.</p>
 <p>Another great resource is the ggplot2 extensions guide <a href="http://www.ggplot2-exts.org/" class="uri">http://www.ggplot2-exts.org/</a>. This site lists many of the packages that extend ggplot2 with new geoms and scales. It’s a great place to start if you’re trying to do something that seems hard with ggplot2.</p>
 <!--chapter:end:communicate-plots.Rmd-->
 </div>
@@ -12697,7 +12696,7 @@ navbar:
 <ul>
 <li><p>The <strong>bookdown</strong> package, <a href="https://github.com/rstudio/bookdown" class="uri">https://github.com/rstudio/bookdown</a>,
 makes it easy to write books, like this one. To learn more, read
-<em>Authoring Books with R Markdown</em><span id="fn33" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="33"><a href="https://bookdown.org/yihui/bookdown/" class="uri">https://bookdown.org/yihui/bookdown/</a></span>,
+<em>Authoring Books with R Markdown</em><span id="fn33" class="footnote" data-pagedown-footnote-number="33" style="white-space: pre-line;"><a href="https://bookdown.org/yihui/bookdown/" class="uri">https://bookdown.org/yihui/bookdown/</a></span>,
 by Yihui Xie, which is, of course, written in bookdown. Visit
 <a href="http://www.bookdown.org" class="uri">http://www.bookdown.org</a> to see other bookdown books written by the
 wider R community.</p></li>
@@ -12714,22 +12713,22 @@ selection of formats tailored for specific scientific journals.</p></li>
 <p>To learn more about effective communication in these different formats I recommend the following resources:</p>
 <ul>
 <li><p>To improve your presentation skills, I recommend
-<em>Presentation Patterns</em><span id="fn34" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="34"><a href="https://amzn.com/0321820800" class="uri">https://amzn.com/0321820800</a></span>, by Neal Ford,
+<em>Presentation Patterns</em><span id="fn34" class="footnote" data-pagedown-footnote-number="34" style="white-space: pre-line;"><a href="https://amzn.com/0321820800" class="uri">https://amzn.com/0321820800</a></span>, by Neal Ford,
 Matthew McCollough, and Nathaniel Schutta. It provides a set of effective
 patterns (both low- and high-level) that you can apply to improve your
 presentations.</p></li>
 <li><p>If you give academic talks, I recommend reading the <em>Leek group guide
-to giving talks</em><span id="fn35" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="35"><a href="https://github.com/jtleek/talkguide" class="uri">https://github.com/jtleek/talkguide</a></span>.</p></li>
+to giving talks</em><span id="fn35" class="footnote" data-pagedown-footnote-number="35" style="white-space: pre-line;"><a href="https://github.com/jtleek/talkguide" class="uri">https://github.com/jtleek/talkguide</a></span>.</p></li>
 <li><p>I haven’t taken it myself, but I’ve heard good things about Matt
 McGarrity’s online course on public speaking:
 <a href="https://www.coursera.org/learn/public-speaking" class="uri">https://www.coursera.org/learn/public-speaking</a>.</p></li>
 <li><p>If you are creating a lot of dashboards, make sure to read Stephen Few’s
 Information Dashboard Design: The Effective Visual Communication
-of Data<span id="fn36" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="36"><a href="https://amzn.com/0596100167" class="uri">https://amzn.com/0596100167</a></span>. It will help you create dashboards
+of Data<span id="fn36" class="footnote" data-pagedown-footnote-number="36" style="white-space: pre-line;"><a href="https://amzn.com/0596100167" class="uri">https://amzn.com/0596100167</a></span>. It will help you create dashboards
 that are truly useful, not just pretty to look at.</p></li>
 <li><p>Effectively communicating your ideas often benefits from some
 knowledge of graphic design. <em>The Non-Designer’s Design
-Book</em><span id="fn37" class="footnote" style="white-space: pre-line;" data-pagedown-footnote-number="37"><a href="http://amzn.com/0133966151" class="uri">http://amzn.com/0133966151</a></span> is a great place to start.</p></li>
+Book</em><span id="fn37" class="footnote" data-pagedown-footnote-number="37" style="white-space: pre-line;"><a href="http://amzn.com/0133966151" class="uri">http://amzn.com/0133966151</a></span> is a great place to start.</p></li>
 </ul>
 <!--chapter:end:rmarkdown-formats.Rmd-->
 </div>

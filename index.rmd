@@ -10,6 +10,8 @@ cover-image: cover.png
 site: bookdown::bookdown_site
 documentclass: book
 always_allow_html: yes
+indent: true
+subparagraph: yes
 linestretch: 1.15
 geometry: b5paper, bottom=0.72in
 toc-title: 'Contents' # option for pagedown
