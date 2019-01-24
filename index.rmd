@@ -10,5 +10,10 @@ cover-image: cover.png
 site: bookdown::bookdown_site
 documentclass: book
 always_allow_html: yes
+toc-title: 'Contents' # option for pagedown
+lot: false  # option for pagedown
+lof: false  # option for pagedown
+links-to-footnotes: true # option for pagedown
+paged-footnotes: true    # option for pagedown
 ---
 

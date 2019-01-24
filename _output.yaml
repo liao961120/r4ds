@@ -14,3 +14,8 @@ bookdown::gitbook:
 bookdown::pdf_book:
   latex_engine: "xelatex"
 
+pagedown::book_crc:
+  toc: true
+  number_sections: true
+  self_contained: false
+  #dev: "png"
