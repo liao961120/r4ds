@@ -1,12 +1,9 @@
 .Rproj.user
 .Rhistory
 *_cache
-*_files
 _main.rds
 *.md
 search_index.json
-libs
 *.rds
 bookdown*
 tmp-pdfcrop-*
-figures
