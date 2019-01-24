@@ -39,6 +39,6 @@ deploy:
   skip-cleanup: true
   github-token: $GH_TOKEN  # Set in travis-ci.org dashboard, marked secure
   keep-history: false
-  local-dir: _bookdown_files # Book output directory
+  local-dir: _book # Book output directory
   on:
     branch: master
