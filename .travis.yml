@@ -24,6 +24,7 @@ before_install:
 
 script:
   - Rscript -e 'devtools::install_github("rstudio/pagedown")'
+  - Rscript -e 'bookdown::render_book("index.Rmd", output_format = "pagedown::book_crc")'
   - Rscript -e 'bookdown::render_book("index.Rmd", output_format = "bookdown::pdf_book")'
   #- mv _book/_main.html _book/index.html
 
