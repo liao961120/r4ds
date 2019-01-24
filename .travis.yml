@@ -26,6 +26,9 @@ script:
   - Rscript -e 'devtools::install_github("rstudio/pagedown")'
   - Rscript -e 'bookdown::render_book("index.Rmd", output_format = "pagedown::book_crc")'
   - Rscript -e 'bookdown::render_book("index.Rmd", output_format = "bookdown::pdf_book")'
+  - mkdir paged
+  - cp -r _main* paged
+  - cp _book/* paged
   #- mv _book/_main.html _book/index.html
 
 
@@ -34,6 +37,6 @@ deploy:
   skip-cleanup: true
   github-token: $GH_TOKEN  # Set in travis-ci.org dashboard, marked secure
   keep-history: false
-#  local-dir: _book # Book output directory
+  local-dir: paged # Book output directory
   on:
     branch: master
