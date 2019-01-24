@@ -23,13 +23,14 @@ before_install:
   - sudo apt-get install libgs-dev
 
 script:
+  - touch .nojekyll
   - Rscript -e 'devtools::install_github("rstudio/pagedown")'
   - Rscript -e 'bookdown::render_book("index.Rmd", output_format = "pagedown::book_crc")'
   - Rscript -e 'bookdown::render_book("index.Rmd", output_format = "bookdown::pdf_book")'
-  - mkdir paged
-  - cp -r _main* paged
-  - cp _book/* paged
-  - mv diagrams paged/
+  - mv _main.html _bookdown_files/index.html
+  - mv diagrams _bookdown_files/
+  - mv images _bookdown_files/
+  - mv _book/_main.pdf _bookdown_files/
   #- mv _book/_main.html _book/index.html
 
 
@@ -38,6 +39,6 @@ deploy:
   skip-cleanup: true
   github-token: $GH_TOKEN  # Set in travis-ci.org dashboard, marked secure
   keep-history: false
-  local-dir: paged # Book output directory
+  local-dir: _bookdown_files # Book output directory
   on:
     branch: master
